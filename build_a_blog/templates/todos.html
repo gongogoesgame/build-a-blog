@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Build a Blog</h1>
+ 
+
+    {% if blogs|length == 0 %}
+    <p>No blogs yet</p>
+    {% else %}
+
+
+
+        {% for blog in blogs %}
+            <h2><a href="./blog?id={{blog.id}}">{{blog.name}}</a></h2>
+            <form method='POST' action ='/delete-blog' style = "display: inline-block;">
+                <input type = "hidden" name = "blog-id" value = "{{blog.id}}" />
+                <input type = "submit" value = "Delete post" />
+            <hr>
+            {% endfor %}
+    </div>
+
+
+
+    {% endif %}
+
+    <hr />
+
+    <ul>
+        {% for blog in completed_tasks %}
+        <li>
+            {{blog.name}}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
